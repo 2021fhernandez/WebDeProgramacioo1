@@ -1,445 +1,479 @@
 <!DOCTYPE html>
-<html data-lt-installed="true" lang="ca">
-<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>Web</title>
-	<style type="text/css">.boto1 {
-    background: linear-gradient(135deg, #000, #6a4cff);
-    color: white;
-    border: none;
-    padding: 10px 18px;
-    border-radius: 8px;
-    font-size: 16px;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-  }
+<html lang="ca">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Web</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&family=Inter:wght@300;400;600&display=swap');
 
-  .fons {
-    background: linear-gradient(135deg, #6a4cff, #000);
-    color: white;
-    min-height: 100vh;
-    padding: 20px;
-  }
+    :root {
+      --accent: #6a4cff;
+      --accent-dark: #3d1fc7;
+      --bg-dark: #0a0a0f;
+    }
 
-  table {
-    width: 100%;
-  }
-	</style>
-	<style type="text/css">@keyframes lpop-blinking {
-  0% {
-    opacity: 0;
-  }
-  49% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-@keyframes lpop-pulsating {
-  0% {
-    box-shadow: 0 0 0 0 var(--lpop-theme-color);
-  }
-  70% {
-    box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-  }
-}
-/**
- * Adds background image to the lpop circle element
- */
-/**
- * Adds background image to the lpop circle element for gdocs
- */
-html [data-lpop-hide-native-caret] {
-  caret-color: transparent !important;
-}
-html [data-lpop-hide-native-caret] * {
-  caret-color: transparent !important;
-}
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
-html [data-lpop-hide-gdocs-caret] {
-  visibility: hidden !important;
-}
+    .boto1 {
+      background: linear-gradient(135deg, #1a1a2e, #6a4cff);
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-size: 15px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(106,76,255,0.3);
+      transition: transform 0.15s, box-shadow 0.15s, background 0.2s;
+    }
+    .boto1:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(106,76,255,0.5);
+      background: linear-gradient(135deg, #6a4cff, #1a1a2e);
+    }
 
-html [data-lpop-hide-gslides-caret] g[id^=editor] rect[x][y][width][height][style*=opacity]:not([fill="#B80672"]):not([fill="#137333"]):not([fill="#9334E6"]):not([fill="#007780"]) {
-  visibility: hidden !important;
-}
+    .fons {
+      background: linear-gradient(135deg, #0a0a0f 0%, #1a0a3f 50%, #0a0a0f 100%);
+      color: white;
+      min-height: 100vh;
+      padding: 24px;
+      font-family: 'Inter', sans-serif;
+    }
 
-lpop-container {
-  box-sizing: content-box !important;
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  overflow: visible !important;
-  padding: 0 !important;
-  z-index: 2147483647 !important;
-  display: block !important;
-  height: 20px !important;
-  width: 1px !important;
-  visibility: visible !important;
-  pointer-events: none !important;
-  background-color: var(--lpop-original-caret-color) !important;
-  transition: background-color 0.2s !important;
-  border: 0 !important;
-  border-left: 2px solid transparent !important;
-  border-right: 2px solid transparent !important;
-  border-bottom: 4px solid transparent !important;
-  background-clip: padding-box !important;
-  font-size: 16px !important;
-  margin: 0 0 0 -2.5px !important;
-}
-lpop-container[data-lpop-blinking] {
-  animation: lpop-blinking 1.1s linear infinite !important;
-  animation-delay: 0.5s !important;
-}
-lpop-container[data-lpop-blinking][data-lpop-pulsating] {
-  animation: unset !important;
-}
-lpop-container[data-lpop-blinking][data-lpop-pulsating] lpop-circle {
-  left: -9px !important;
-  animation: lpop-pulsating 2s infinite !important;
-  animation-delay: 0.5s !important;
-  transition: border-color 0.2s, background-color 0.2s !important;
-  transition-delay: 0.1s !important;
-  height: 19px !important;
-  width: 19px !important;
-}
-lpop-container[data-lpop-blinking][data-lpop-pulsating] lpop-circle::before {
-  opacity: 1 !important;
-  transition: opacity 0.2s !important;
-  transition-delay: 0.2s !important;
-  background-color: var(--lpop-theme-color) !important;
-  background-image: var(--lpop-circle-image) !important;
-  background-position: center !important;
-  background-repeat: no-repeat !important;
-}
-lpop-container[data-lpop-blinking][data-lpop-extended-selection], lpop-container[data-lpop-blinking][data-lpop-hovered], lpop-container[data-lpop-blinking][data-lpop-clicked], lpop-container[data-lpop-blinking][data-lpop-pulsating][data-lpop-clicked] {
-  animation: none !important;
-}
-lpop-container[data-lpop-blinking][data-lpop-extended-selection] lpop-circle, lpop-container[data-lpop-blinking][data-lpop-hovered] lpop-circle, lpop-container[data-lpop-blinking][data-lpop-clicked] lpop-circle, lpop-container[data-lpop-blinking][data-lpop-pulsating][data-lpop-clicked] lpop-circle {
-  animation: none !important;
-}
-lpop-container[data-lpop-os=Linux] {
-  animation-delay: 1s !important;
-  animation-duration: 2.2s !important;
-}
-lpop-container[data-lpop-hoverable] lpop-circle {
-  transition: top 0.2s, left 0.2s, height 0.2s, width 0.2s, border-color 0.2s, background-color 0.2s !important;
-  transition-delay: 0.1s !important;
-  pointer-events: all !important;
-  cursor: pointer !important;
-}
-lpop-container[data-lpop-extended-selection], lpop-container[data-lpop-clicked], lpop-container[data-lpop-hovered], lpop-container[data-lpop-pulsating] {
-  background-color: var(--lpop-theme-color) !important;
-}
-lpop-container[data-lpop-extended-selection] lpop-circle, lpop-container[data-lpop-clicked] lpop-circle, lpop-container[data-lpop-hovered] lpop-circle, lpop-container[data-lpop-pulsating] lpop-circle {
-  border-color: var(--lpop-theme-color-dark) !important;
-  background-color: var(--lpop-theme-color) !important;
-}
-lpop-container[data-lpop-mousedown] lpop-tooltip, lpop-container[data-lpop-clicked] lpop-tooltip {
-  display: none !important;
-}
-lpop-container[data-lpop-clicked] lpop-circle {
-  cursor: default !important;
-  pointer-events: none !important;
-}
-lpop-container[data-lpop-size=small] {
-  border-left: 1px solid transparent !important;
-  border-right: 1px solid transparent !important;
-  border-bottom: 2px solid transparent !important;
-  margin-left: -1.5px !important;
-}
-lpop-container[data-lpop-size=small] lpop-circle {
-  height: 3px !important;
-  width: 3px !important;
-  left: -1px !important;
-}
-lpop-container[data-lpop-size=large] {
-  border-left: 3px solid transparent !important;
-  border-right: 3px solid transparent !important;
-  border-bottom: 5px solid transparent !important;
-  margin-left: -3.5px !important;
-}
-lpop-container[data-lpop-size=large] lpop-circle {
-  top: calc(100% - 3px) !important;
-  height: 7px !important;
-  width: 7px !important;
-  left: -3px !important;
-}
-lpop-container[data-lpop-circle-position=top] lpop-circle {
-  top: -2px !important;
-  transform-origin: center calc(100% - 1px) !important;
-}
-lpop-container[data-lpop-circle-position=top] lpop-circle::after {
-  top: -4px !important;
-  bottom: 0 !important;
-}
-lpop-container[data-lpop-circle-position=top][data-lpop-size=large] lpop-circle {
-  top: -3px !important;
-}
-lpop-container[data-lpop-extended-selection] lpop-circle {
-  top: calc(100% - 3px) !important;
-  height: 7px !important;
-  width: 7px !important;
-  left: -3px !important;
-}
-lpop-container[data-lpop-extended-selection][data-lpop-circle-position=top] lpop-circle {
-  top: -4px !important;
-}
-lpop-container[data-lpop-extended-selection][data-lpop-size=small] lpop-circle {
-  height: 5px !important;
-  width: 5px !important;
-  left: -2px !important;
-}
-lpop-container[data-lpop-extended-selection][data-lpop-size=small][data-lpop-circle-position=top] lpop-circle {
-  top: -3px !important;
-}
-lpop-container[data-lpop-extended-selection][data-lpop-size=large] lpop-circle {
-  top: calc(100% - 4px) !important;
-  height: 9px !important;
-  width: 9px !important;
-  left: -4px !important;
-}
-lpop-container[data-lpop-extended-selection][data-lpop-size=large][data-lpop-circle-position=top] lpop-circle {
-  top: -5px !important;
-}
-lpop-container[data-lpop-hovered] lpop-circle, lpop-container[data-lpop-extended-selection][data-lpop-hovered] lpop-circle {
-  left: -9px !important;
-  height: 19px !important;
-  width: 19px !important;
-}
-lpop-container[data-lpop-hovered] lpop-circle::before, lpop-container[data-lpop-extended-selection][data-lpop-hovered] lpop-circle::before {
-  opacity: 1 !important;
-  transition: opacity 0.2s !important;
-  transition-delay: 0.2s !important;
-  background-color: var(--lpop-theme-color) !important;
-  background-image: var(--lpop-circle-image) !important;
-  background-position: center !important;
-  background-repeat: no-repeat !important;
-}
-lpop-container[data-lpop-hovered][data-lpop-circle-position=top] lpop-circle, lpop-container[data-lpop-extended-selection][data-lpop-hovered][data-lpop-circle-position=top] lpop-circle {
-  top: -15px !important;
-}
-lpop-container[data-lpop-hovered][data-lpop-size=large] lpop-circle, lpop-container[data-lpop-extended-selection][data-lpop-hovered][data-lpop-size=large] lpop-circle {
-  left: -9px !important;
-}
-lpop-container[data-lpop-mousedown] lpop-circle, lpop-container[data-lpop-extended-selection][data-lpop-mousedown] lpop-circle {
-  background-color: inherit !important;
-}
-lpop-container[data-lpop-mousedown] lpop-circle::before, lpop-container[data-lpop-extended-selection][data-lpop-mousedown] lpop-circle::before {
-  content: "" !important;
-  position: absolute !important;
-  top: 0 !important;
-  right: 0 !important;
-  left: 0 !important;
-  bottom: 0 !important;
-  border-radius: 50% !important;
-  background-color: var(--lpop-theme-color-dark) !important;
-}
-lpop-container[data-lpop-animation-disabled][data-lpop-animation-disabled][data-lpop-animation-disabled] lpop-circle {
-  transition: none !important;
-}
+    /* NAVBAR */
+    .navbar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 20px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(106,76,255,0.2);
+      border-radius: 14px;
+      backdrop-filter: blur(10px);
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+    }
+    .nav-logo { height: 52px; border-radius: 8px; }
+    .nav-links { display: flex; gap: 8px; flex: 1; flex-wrap: wrap; }
+    .nav-links button { font-size: 14px; padding: 8px 14px; }
+    .search-area { display: flex; gap: 6px; align-items: center; }
+    .search-area input {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(106,76,255,0.3);
+      color: white;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 14px;
+      outline: none;
+      width: 200px;
+      transition: border-color 0.2s, width 0.3s;
+    }
+    .search-area input:focus { border-color: #6a4cff; width: 260px; }
+    .search-area input::placeholder { color: rgba(255,255,255,0.4); }
+    .warranty-badge {
+      background: linear-gradient(135deg, #1a3a1a, #2d7a2d);
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      border: 1px solid rgba(60,200,60,0.3);
+      white-space: nowrap;
+    }
 
-lpop-circle {
-  position: absolute !important;
-  top: calc(100% - 2px) !important;
-  left: -2px !important;
-  height: 5px !important;
-  width: 5px !important;
-  box-sizing: border-box !important;
-  visibility: visible !important;
-  border-radius: 50% !important;
-  border: 1px solid var(--lpop-original-caret-color) !important;
-  background: #fff !important;
-  transform-origin: center 1px !important;
-  pointer-events: none !important;
-  outline: 1px solid transparent !important;
-  anchor-name: --anchor-lpop !important;
-}
-lpop-circle::before {
-  border-radius: 50% !important;
-  content: "" !important;
-  position: absolute !important;
-  pointer-events: none !important;
-  inset: 0 !important;
-  opacity: 0 !important;
-  transition: opacity 0s !important;
-}
-lpop-circle::after {
-  content: "" !important;
-  position: absolute !important;
-  left: -5px !important;
-  right: -5px !important;
-  bottom: -4px !important;
-  top: 0px !important;
-}
+    /* TOAST */
+    #toast {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: rgba(106,76,255,0.95);
+      color: white;
+      padding: 12px 22px;
+      border-radius: 10px;
+      font-size: 14px;
+      box-shadow: 0 4px 20px rgba(106,76,255,0.5);
+      transform: translateY(80px);
+      opacity: 0;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      z-index: 9999;
+    }
+    #toast.show { transform: translateY(0); opacity: 1; }
 
-lpop-container[data-lpop-adapter-name=gdocs],
-lpop-container[data-lpop-adapter-name=gslides] {
-  width: 2px !important;
-}
-lpop-container[data-lpop-adapter-name=gdocs][data-lpop-blinking],
-lpop-container[data-lpop-adapter-name=gslides][data-lpop-blinking] {
-  animation-duration: 1s !important;
-}
-lpop-container[data-lpop-adapter-name=gdocs] lpop-circle,
-lpop-container[data-lpop-adapter-name=gslides] lpop-circle {
-  height: 6px !important;
-  width: 6px !important;
-}
-lpop-container[data-lpop-adapter-name=gdocs][data-lpop-size=small] lpop-circle,
-lpop-container[data-lpop-adapter-name=gslides][data-lpop-size=small] lpop-circle {
-  width: 4px !important;
-  height: 4px !important;
-}
-lpop-container[data-lpop-adapter-name=gdocs][data-lpop-size=large] lpop-circle,
-lpop-container[data-lpop-adapter-name=gslides][data-lpop-size=large] lpop-circle {
-  width: 8px !important;
-  height: 8px !important;
-}
-lpop-container[data-lpop-adapter-name=gdocs][data-lpop-extended-selection] lpop-circle,
-lpop-container[data-lpop-adapter-name=gslides][data-lpop-extended-selection] lpop-circle {
-  height: 8px !important;
-  width: 8px !important;
-}
-lpop-container[data-lpop-adapter-name=gdocs][data-lpop-extended-selection][data-lpop-size=small] lpop-circle,
-lpop-container[data-lpop-adapter-name=gslides][data-lpop-extended-selection][data-lpop-size=small] lpop-circle {
-  height: 6px !important;
-  width: 6px !important;
-}
-lpop-container[data-lpop-adapter-name=gdocs][data-lpop-extended-selection][data-lpop-size=large] lpop-circle,
-lpop-container[data-lpop-adapter-name=gslides][data-lpop-extended-selection][data-lpop-size=large] lpop-circle {
-  height: 10px !important;
-  width: 10px !important;
-}
-lpop-container[data-lpop-adapter-name=gdocs][data-lpop-blinking][data-lpop-pulsating] lpop-circle,
-lpop-container[data-lpop-adapter-name=gslides][data-lpop-blinking][data-lpop-pulsating] lpop-circle {
-  left: -9px !important;
-  height: 20px !important;
-  width: 20px !important;
-}
-lpop-container[data-lpop-adapter-name=gdocs][data-lpop-blinking][data-lpop-pulsating] lpop-circle::before,
-lpop-container[data-lpop-adapter-name=gslides][data-lpop-blinking][data-lpop-pulsating] lpop-circle::before {
-  background-image: var(--lpop-circle-image-gdocs) !important;
-}
-lpop-container[data-lpop-adapter-name=gdocs][data-lpop-hovered] lpop-circle, lpop-container[data-lpop-adapter-name=gdocs][data-lpop-extended-selection][data-lpop-hovered] lpop-circle,
-lpop-container[data-lpop-adapter-name=gslides][data-lpop-hovered] lpop-circle,
-lpop-container[data-lpop-adapter-name=gslides][data-lpop-extended-selection][data-lpop-hovered] lpop-circle {
-  left: -9px !important;
-  height: 20px !important;
-  width: 20px !important;
-}
-lpop-container[data-lpop-adapter-name=gdocs][data-lpop-hovered] lpop-circle::before, lpop-container[data-lpop-adapter-name=gdocs][data-lpop-extended-selection][data-lpop-hovered] lpop-circle::before,
-lpop-container[data-lpop-adapter-name=gslides][data-lpop-hovered] lpop-circle::before,
-lpop-container[data-lpop-adapter-name=gslides][data-lpop-extended-selection][data-lpop-hovered] lpop-circle::before {
-  background-image: var(--lpop-circle-image-gdocs) !important;
-}
+    /* CART */
+    .cart-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: linear-gradient(135deg, #6a4cff, #3d1fc7);
+      color: white;
+      border: none;
+      padding: 12px 18px;
+      border-radius: 50px;
+      font-size: 15px;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(106,76,255,0.5);
+      z-index: 1000;
+      transition: transform 0.2s;
+    }
+    .cart-btn:hover { transform: scale(1.06); }
+    .cart-count {
+      background: #ff4c6a;
+      border-radius: 50%;
+      padding: 1px 6px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-left: 6px;
+    }
 
-lpop-tooltip {
-  all: initial !important;
-  font-family: Helvetica, Arial sans-serif !important;
-  font-size: 12px !important;
-  pointer-events: none !important;
-  -webkit-font-smoothing: antialiased !important;
-  -moz-osx-font-smoothing: grayscale !important;
-  position: fixed !important;
-  color: white !important;
-  border-radius: 6px !important;
-  background-color: rgba(29, 30, 32, 0.9) !important;
-  max-height: 40px !important;
-  max-width: auto !important;
-  overflow: hidden !important;
-  line-height: 16px !important;
-  padding: 3px 6px !important;
-  border: none !important;
-  white-space: nowrap !important;
-  position-anchor: --anchor-lpop !important;
-  inset: auto !important;
-  left: calc(anchor(right) + 8px) !important;
-  align-self: anchor-center !important;
-  position-try-options: flip-inline !important;
-  position-try-fallbacks: flip-inline !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  transition: opacity 0.5s, display 0.5s !important;
-}
-@starting-style {
-  lpop-tooltip:popover-open {
-    opacity: 0 !important;
-  }
-}
-lpop-tooltip:popover-open {
-  visibility: visible !important;
-  opacity: 1 !important;
-}
+    /* CART PANEL */
+    .cart-panel {
+      position: fixed;
+      top: 0; right: -380px;
+      width: 360px;
+      height: 100vh;
+      background: #12121f;
+      border-left: 1px solid rgba(106,76,255,0.3);
+      z-index: 2000;
+      padding: 24px;
+      transition: right 0.35s cubic-bezier(0.4,0,0.2,1);
+      overflow-y: auto;
+    }
+    .cart-panel.open { right: 0; }
+    .cart-panel h2 { font-family: 'Rajdhani', sans-serif; font-size: 22px; margin-bottom: 18px; color: #a08bff; }
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255,255,255,0.05);
+      border-radius: 8px;
+      padding: 10px 12px;
+      margin-bottom: 10px;
+      font-size: 14px;
+      gap: 8px;
+    }
+    .cart-item button {
+      background: #ff4c6a;
+      border: none;
+      color: white;
+      border-radius: 6px;
+      padding: 4px 8px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+    .cart-total {
+      margin-top: 16px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #a08bff;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 14px;
+    }
+    .cart-checkout {
+      margin-top: 14px;
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(135deg, #6a4cff, #3d1fc7);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 15px;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .cart-checkout:hover { opacity: 0.85; }
+    .close-cart {
+      float: right;
+      background: transparent;
+      border: none;
+      color: rgba(255,255,255,0.5);
+      font-size: 22px;
+      cursor: pointer;
+      line-height: 1;
+    }
+    .overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      z-index: 1999;
+    }
+    .overlay.visible { display: block; }
 
-@media print {
-  lpop-tooltip,
-  lpop-container {
-    display: none !important;
-  }
-}
-lpop-container[data-lpop-theme=green] lpop-tooltip {
-  border-radius: 8px !important;
-  padding: 8px !important;
-  background-color: rgb(44, 62, 93) !important;
-}
-	</style>
+    /* PRODUCTS */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      gap: 20px;
+      margin-top: 10px;
+    }
+    .product-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(106,76,255,0.2);
+      border-radius: 14px;
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+      animation: fadeIn 0.4s ease both;
+    }
+    .product-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(106,76,255,0.6);
+      box-shadow: 0 8px 30px rgba(106,76,255,0.2);
+    }
+    .product-card img {
+      width: 140px;
+      height: 130px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 12px;
+    }
+    .product-card h3 { font-size: 15px; margin-bottom: 6px; font-family: 'Rajdhani', sans-serif; font-size: 17px; }
+    .product-price { color: #a08bff; font-weight: 700; font-size: 17px; margin-bottom: 6px; }
+    .stars { color: gold; font-size: 14px; margin-bottom: 10px; }
+    .btn-add {
+      background: linear-gradient(135deg, #6a4cff, #3d1fc7);
+      color: white;
+      border: none;
+      padding: 9px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      width: 100%;
+      transition: opacity 0.2s;
+    }
+    .btn-add:hover { opacity: 0.85; }
+
+    /* SEARCH FILTER */
+    .no-results { text-align: center; color: rgba(255,255,255,0.4); padding: 40px; font-size: 16px; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* MODAL */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.7);
+      z-index: 3000;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal {
+      background: #12121f;
+      border: 1px solid rgba(106,76,255,0.4);
+      border-radius: 16px;
+      padding: 30px;
+      max-width: 420px;
+      width: 90%;
+      text-align: center;
+      animation: fadeIn 0.3s ease;
+    }
+    .modal img { width: 160px; border-radius: 10px; margin-bottom: 14px; }
+    .modal h2 { font-family: 'Rajdhani', sans-serif; font-size: 22px; margin-bottom: 8px; }
+    .modal p { color: rgba(255,255,255,0.6); font-size: 14px; margin-bottom: 14px; }
+    .modal-price { color: #a08bff; font-size: 20px; font-weight: 700; margin-bottom: 16px; }
+    .modal-close { background: transparent; border: none; color: rgba(255,255,255,0.4); font-size: 20px; cursor: pointer; float: right; }
+  </style>
 </head>
-<body class="fons" data-gramm="false" data-lt-tmp-id="lt-685743">
-<table>
-	<thead>
-		<tr>
-			<th><button class="boto1"></button>
-			<h3><button class="boto1">ㅤIniciㅤ</button></h3>
-			</th>
-			<th><button class="boto1"></button>
-			<h3><button class="boto1">ㅤProductesㅤ</button></h3>
-			</th>
-			<th><button class="boto1"></button>
-			<h3><button class="boto1">Ajuda</button></h3>
-			</th>
-			<th>ㅤㅤ</th>
-			<th><button class="boto1"></button>
-			<h3><button class="boto1">Nosaltres</button></h3>
-			</th>
-			<th>ㅤㅤ</th>
-			<th><button class="boto1"></button>
-			<h3><button class="boto1">Xarxes</button></h3>
-			</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><img alt="" class="boto1" height="90" src="https://cdn-icons-png.flaticon.com/256/3144/3144456.png" width="90" /></td>
-			<td><input class="boto1" placeholder="Cerca productes..." type="text" /><button class="boto1">🔍</button></td>
-			<td>&nbsp;</td>
-			<td colspan="3"><button class="boto1"></button>
-			<h3><button class="boto1">Garantia de 2 anys</button></h3>
-			</td>
-		</tr>
-		<tr>
-			<td colspan="2"><img alt="" class="boto1" src="https://vioksport.es/wp-content/uploads/2020/08/barra-olimpica-20kg.jpg" width="150" />
-			<h3 class="boto1">Barra Ol&iacute;mpica 20kg</h3>
-			<span class="boto1">129,9&euro;</span>
+<body class="fons">
 
-			<p class="boto1">★ ★ ★ ★ ☆</p>
-			</td>
-			<td>ㅤㅤ</td>
-			<td colspan="3"><img alt="" class="boto1" src="https://www.titaniumstrength.es/media/catalog/product/cache/091edd3dd24f94ee9e594de8bb6fb808/t/i/titanium-strength-heavy-duty-adjustable-bench.jpg" width="200" />
-			<h3 class="boto1">Banc Ajustable Multifunci&oacute;</h3>
-			<span class="boto1">249,9&euro;</span>
+<!-- Cart button -->
+<button class="cart-btn" onclick="toggleCart()">🛒 Cistella <span class="cart-count" id="cart-count">0</span></button>
 
-			<p class="boto1">★ ★ ★ ★ ☆</p>
-			</td>
-			<td>&nbsp;</td>
-		</tr>
-	</tbody>
-</table>
+<!-- Overlay -->
+<div class="overlay" id="overlay" onclick="toggleCart()"></div>
+
+<!-- Cart panel -->
+<div class="cart-panel" id="cart-panel">
+  <button class="close-cart" onclick="toggleCart()">✕</button>
+  <h2>🛒 La teva cistella</h2>
+  <div id="cart-items"></div>
+  <div class="cart-total" id="cart-total"></div>
+  <button class="cart-checkout" onclick="checkout()">✓ Finalitzar comanda</button>
+</div>
+
+<!-- Toast -->
+<div id="toast"></div>
+
+<!-- Product detail modal -->
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <img id="modal-img" src="" alt="">
+    <h2 id="modal-name"></h2>
+    <p id="modal-desc"></p>
+    <div class="modal-price" id="modal-price"></div>
+    <div class="stars" id="modal-stars"></div>
+    <button class="btn-add" onclick="addFromModal()">+ Afegir a la cistella</button>
+  </div>
+</div>
+
+<!-- NAV -->
+<div class="navbar">
+  <img class="nav-logo" src="https://cdn-icons-png.flaticon.com/256/3144/3144456.png" alt="logo">
+  <div class="nav-links">
+    <button class="boto1" onclick="showToast('Benvingut a Inici!')">ㅤIniciㅤ</button>
+    <button class="boto1" onclick="filterSection('all')">ㅤProductesㅤ</button>
+    <button class="boto1" onclick="showToast('Ens pots escriure a ajuda@web.cat')">Ajuda</button>
+    <button class="boto1" onclick="showToast('Som un equip apassionat per l\'esport!')">Nosaltres</button>
+    <button class="boto1" onclick="showToast('Segueix-nos a Instagram i TikTok!')">Xarxes</button>
+  </div>
+  <div class="search-area">
+    <input type="text" id="search-input" placeholder="Cerca productes..." oninput="filterProducts()">
+    <button class="boto1" onclick="filterProducts()">🔍</button>
+  </div>
+  <div class="warranty-badge">✅ Garantia de 2 anys</div>
+</div>
+
+<!-- Sort controls -->
+<div style="display:flex; gap:10px; margin-bottom:18px; flex-wrap:wrap; align-items:center;">
+  <span style="color:rgba(255,255,255,0.5); font-size:14px;">Ordenar per:</span>
+  <button class="boto1" style="font-size:13px; padding:7px 12px;" onclick="sortProducts('price-asc')">Preu ↑</button>
+  <button class="boto1" style="font-size:13px; padding:7px 12px;" onclick="sortProducts('price-desc')">Preu ↓</button>
+  <button class="boto1" style="font-size:13px; padding:7px 12px;" onclick="sortProducts('name')">Nom A-Z</button>
+  <button class="boto1" style="font-size:13px; padding:7px 12px;" onclick="sortProducts('rating')">Valoració ⭐</button>
+  <span id="results-count" style="color:rgba(255,255,255,0.4); font-size:13px; margin-left:auto;"></span>
+</div>
+
+<!-- Products grid -->
+<div class="products-grid" id="products-grid"></div>
+
+<script>
+  const products = [
+    { id:1, name:"Barra Olímpica 20kg", price:129.9, rating:4, img:"https://vioksport.es/wp-content/uploads/2020/08/barra-olimpica-20kg.jpg", desc:"Barra olímpica d'alta qualitat, ideal per a powerlifting i halterofília. Capacitat de 680 kg." },
+    { id:2, name:"Banc Ajustable Multifunció", price:249.9, rating:4, img:"https://www.titaniumstrength.es/media/catalog/product/cache/091edd3dd24f94ee9e594de8bb6fb808/t/i/titanium-strength-heavy-duty-adjustable-bench.jpg", desc:"Banc regulable amb múltiples posicions, estructura d'acer reforçat. Fins a 300 kg de càrrega." },
+    { id:3, name:"Mancuernes 10kg (parell)", price:39.9, rating:5, img:"https://cdn-icons-png.flaticon.com/512/3043/3043155.png", desc:"Mancuernes de goma antilliscant, perfectes per a entrenament en casa o gimnàs." },
+    { id:4, name:"Corda de saltar Pro", price:14.9, rating:4, img:"https://cdn-icons-png.flaticon.com/512/2964/2964514.png", desc:"Corda d'alumini amb coixinets de rodaments per a velocitat màxima. Longitud ajustable." },
+    { id:5, name:"Guants d'Entrenament", price:22.5, rating:3, img:"https://cdn-icons-png.flaticon.com/512/1048/1048953.png", desc:"Guants de cuir sintètic amb suport de canell integrat. Talla M/L/XL." },
+    { id:6, name:"Kettlebell 16kg", price:44.9, rating:5, img:"https://cdn-icons-png.flaticon.com/512/2382/2382533.png", desc:"Kettlebell de ferro fos amb base plana antilliscant. Excel·lent per a circuits funcionals." },
+  ];
+
+  let cart = [];
+  let currentSort = 'default';
+  let modalProduct = null;
+
+  function starsHTML(r) {
+    return '★'.repeat(r) + '☆'.repeat(5 - r);
+  }
+
+  function renderProducts(list) {
+    const grid = document.getElementById('products-grid');
+    document.getElementById('results-count').textContent = list.length + ' producte' + (list.length !== 1 ? 's' : '');
+    if (!list.length) {
+      grid.innerHTML = '<div class="no-results">Cap producte trobat 😕</div>';
+      return;
+    }
+    grid.innerHTML = list.map((p, i) => `
+      <div class="product-card" style="animation-delay:${i * 0.07}s">
+        <img src="${p.img}" alt="${p.name}" onclick="openModal(${p.id})" style="cursor:pointer">
+        <h3>${p.name}</h3>
+        <div class="stars">${starsHTML(p.rating)}</div>
+        <div class="product-price">${p.price.toFixed(2)}€</div>
+        <button class="btn-add" onclick="addToCart(${p.id})">🛒 Afegir a la cistella</button>
+      </div>
+    `).join('');
+  }
+
+  function filterProducts() {
+    const q = document.getElementById('search-input').value.toLowerCase().trim();
+    let list = q ? products.filter(p => p.name.toLowerCase().includes(q)) : [...products];
+    applySort(list);
+  }
+
+  function sortProducts(method) {
+    currentSort = method;
+    filterProducts();
+  }
+
+  function applySort(list) {
+    if (currentSort === 'price-asc') list.sort((a,b) => a.price - b.price);
+    else if (currentSort === 'price-desc') list.sort((a,b) => b.price - a.price);
+    else if (currentSort === 'name') list.sort((a,b) => a.name.localeCompare(b.name));
+    else if (currentSort === 'rating') list.sort((a,b) => b.rating - a.rating);
+    renderProducts(list);
+  }
+
+  function addToCart(id) {
+    const p = products.find(x => x.id === id);
+    const existing = cart.find(x => x.id === id);
+    if (existing) existing.qty++;
+    else cart.push({ ...p, qty: 1 });
+    updateCartUI();
+    showToast(`✅ ${p.name} afegit!`);
+    // bounce animation on cart button
+    const btn = document.querySelector('.cart-btn');
+    btn.style.transform = 'scale(1.2)';
+    setTimeout(() => btn.style.transform = '', 200);
+  }
+
+  function removeFromCart(id) {
+    cart = cart.filter(x => x.id !== id);
+    updateCartUI();
+  }
+
+  function updateCartUI() {
+    const total = cart.reduce((s, x) => s + x.price * x.qty, 0);
+    const count = cart.reduce((s, x) => s + x.qty, 0);
+    document.getElementById('cart-count').textContent = count;
+    document.getElementById('cart-items').innerHTML = cart.length
+      ? cart.map(x => `
+          <div class="cart-item">
+            <span>${x.name} ×${x.qty}</span>
+            <span>${(x.price * x.qty).toFixed(2)}€</span>
+            <button onclick="removeFromCart(${x.id})">✕</button>
+          </div>`).join('')
+      : '<p style="color:rgba(255,255,255,0.4);font-size:14px">La cistella és buida.</p>';
+    document.getElementById('cart-total').innerHTML = cart.length
+      ? `Total: <strong>${total.toFixed(2)}€</strong>` : '';
+  }
+
+  function toggleCart() {
+    document.getElementById('cart-panel').classList.toggle('open');
+    document.getElementById('overlay').classList.toggle('visible');
+  }
+
+  function checkout() {
+    if (!cart.length) { showToast('⚠️ La cistella és buida!'); return; }
+    cart = [];
+    updateCartUI();
+    toggleCart();
+    showToast('🎉 Comanda realitzada amb èxit! Gràcies!');
+  }
+
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    clearTimeout(window._toastTimer);
+    window._toastTimer = setTimeout(() => t.classList.remove('show'), 3000);
+  }
+
+  function openModal(id) {
+    modalProduct = products.find(x => x.id === id);
+    document.getElementById('modal-img').src = modalProduct.img;
+    document.getElementById('modal-name').textContent = modalProduct.name;
+    document.getElementById('modal-desc').textContent = modalProduct.desc;
+    document.getElementById('modal-price').textContent = modalProduct.price.toFixed(2) + '€';
+    document.getElementById('modal-stars').innerHTML = starsHTML(modalProduct.rating);
+    document.getElementById('modal-overlay').classList.add('open');
+  }
+
+  function closeModal() {
+    document.getElementById('modal-overlay').classList.remove('open');
+    modalProduct = null;
+  }
+
+  function addFromModal() {
+    if (modalProduct) { addToCart(modalProduct.id); closeModal(); }
+  }
+
+  // Close modal on overlay click
+  document.getElementById('modal-overlay').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
+  renderProducts(products);
+  updateCartUI();
+</script>
 </body>
 </html>
